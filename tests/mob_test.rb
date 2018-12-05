@@ -4,7 +4,7 @@ require_relative '../src/mob'
 class MobTest < Minitest::Test
 
   def setup
-    @test_mob = Mob.new({})
+    @test_mob = Mob.new
   end
 
   # Constraints
@@ -49,8 +49,14 @@ class MobTest < Minitest::Test
 
   def test_take_damage_heal
     hp = @test_mob.hp
+    @test_mob.take_damage(1)
     @test_mob.take_damage(-1)
-    assert_equal @test_mob.hp, hp+1, "expect take_damage to heal when applying negative"
+    assert_equal @test_mob.hp, hp, "expect take_damage to heal when applying negative"
+  end
+
+  def test_take_damage_heal_too_much
+    @test_mob.take_damage(-1e6)
+    assert_equal @test_mob.hp, @test_mob.max_hp, 'Heals should not heal more than max hp'
   end
 
   ## alive?
