@@ -11,6 +11,11 @@ Make Base classes
     - Interface: warCry, attack, takeDamage, isAlive, getStatus
   - Arena - Why does it change? It changes when a match starts and ends.
     - Attrs: battleStatus[NotStarted, InProgress, Complete]
+    - manages combat:
+      - determines when:
+        - a mob specials: percentile based on str
+        - a mob dodges: percentile based on dex
+        - a mob regens: percentile based on con
   - Gamekeeper - Why does it change? Changes to reflect User state.
 
 ### Open-Closed Principal

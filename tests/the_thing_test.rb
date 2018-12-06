@@ -1,11 +1,10 @@
 require 'minitest/autorun'
-require_relative '../src/mob'
+require_relative '../src/mobs/the_thing'
 
-
-class MobTest < Minitest::Test
+class TheThingTest < Minitest::Test
 
   def setup
-    @test_mob = Mob.new
+    @test_mob = TheThing.new
   end
 
   # Constraints

@@ -1,6 +1,6 @@
 def damage_noun(damage_int)
   case
-  when (damage_int == 0)
+  when (damage_int < 1)
     "misses"
   when (1..2).to_a.include?(damage_int)
     "tickles"
@@ -16,9 +16,11 @@ def damage_noun(damage_int)
     "MULITATES"
   when (160..320).to_a.include?(damage_int)
     "EVISCERATES"
-  when (320..640).to_a.include?(damage_int)
+  when (320..440).to_a.include?(damage_int)
     "MANGLES"
+  when (440..640).to_a.include?(damage_int)
+    "***DEMOLISHES***"
   else
-    "ANNIHILATES"
+    ">>>ANNIHILATES<<<"
   end
 end

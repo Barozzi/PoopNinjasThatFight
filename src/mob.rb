@@ -14,11 +14,15 @@ class Mob
 
   # Special move
   def special
-    [@special_text, (@str/2)]
+    ["#{@type} " + @special_text, (@str/2)]
   end
 
   def attack
     ["#{@type}'s #{@damage_type} %s %s", @str]
+  end
+
+  def regen
+    ["#{@type} looks better", -(@con/2)]
   end
 
   def take_damage(n)
