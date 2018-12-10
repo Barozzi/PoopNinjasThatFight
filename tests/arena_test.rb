@@ -6,7 +6,7 @@ require_relative '../src/mob'
 
 class ArenaTest < Minitest::Test
   def setup
-    @arena = Arena.new ({mob_one: Mob.new, mob_two: Mob.new});
+    @arena = Arena.new ({mob_one: Mob.new({}), mob_two: Mob.new({})});
   end
 
   # battle_complete?
@@ -30,4 +30,28 @@ class ArenaTest < Minitest::Test
     assert true
   end
 
+  # Play Ninja vs Thing
+  def test_ninja_vs_thing
+    ninja = Mob.new(MOBS[:PoopNinja])
+    thing = Mob.new(MOBS[:TheThing])
+    arena = Arena.new({mob_one: ninja, mob_two: thing})
+    arena.start_battle
+    assert true
+  end
+
+  # Play Thing vs Thor
+  def test_random_fight
+    mob_one = Mob.new(MOBS[MOBS.keys.sample])
+    mob_two = Mob.new(MOBS[MOBS.keys.sample])
+    arena = Arena.new({mob_one: mob_one, mob_two: mob_two})
+    arena.start_battle
+    assert true
+  end
+
+  def test_slime_vs_random
+    mob_two = Mob.new(MOBS[MOBS.keys.sample])
+    arena = Arena.new({mob_one: Mob.new(MOBS[:Giant]), mob_two: mob_two})
+    arena.start_battle
+    assert true
+  end
 end

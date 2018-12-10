@@ -34,13 +34,21 @@ class Arena
   end
 
   def do_attack
-    do_damage(@mob_one.attack, @mob_two) unless dodge?(@mob_two)
-    do_damage(@mob_two.attack, @mob_one) unless dodge?(@mob_one)
+    @mobs.each_with_index do |mob, index|
+      if (mob.alive?)
+        target_mob = @mobs[(index ^ 1)]
+        if dodge?(target_mob)
+          print "\n#{target_mob.type} dodges an attack."
+        else 
+          do_damage(mob.attack, target_mob)
+        end
+      end
+    end
   end
 
   def do_regen
     do_damage(@mob_one.regen, @mob_one) if regen?(@mob_one)
-    do_damage(@mob_two.special, @mob_two) if regen?(@mob_two)
+    do_damage(@mob_two.regen, @mob_two) if regen?(@mob_two)
   end
 
   def do_damage(damage_array, target_mob)
@@ -55,11 +63,12 @@ class Arena
   end
 
   def special?(mob)
-    die_roll < mob.str
+    die_roll < ((mob.str > mob.dex) ? mob.str : mob.dex)
   end
 
   def dodge?(mob)
-    die_roll < mob.dex
+    return false if mob.dex < 6
+    die_roll < (mob.dex + (mob.dex-6)*3)
   end
 
   def regen?(mob)
@@ -89,8 +98,8 @@ class Arena
   def report
     puts ""
     puts "#{@mob_one.type}:#{@mob_one.hp} || #{@mob_two.type}:#{@mob_two.hp}" unless battle_complete?
-    puts "#{@mob_one.type} wins the battle!" if @mob_one.alive? && !@mob_two.alive?
-    puts "#{@mob_two.type} wins the battle!" if !@mob_one.alive? && @mob_two.alive?
+    puts "Combatant one, #{@mob_one.type} wins the battle!" if @mob_one.alive? && !@mob_two.alive?
+    puts "Combatant two, #{@mob_two.type} wins the battle!" if !@mob_one.alive? && @mob_two.alive?
   end
 
 end
