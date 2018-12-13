@@ -1,6 +1,6 @@
 MOBS = {
   PoopNinja: {
-    type: 'Poop Ninja',
+    type: 'PoopNinja',
     str: 8,
     dex: 19,
     con: 3,
@@ -20,7 +20,7 @@ MOBS = {
     str: 11,
     dex: 11,
     con: 8,
-    damage_type: 'maniacle laugh',
+    damage_type: 'evil look',
     special_text: 'attacks from the shadows!'
   },
   PrincePoopypants: {
@@ -35,7 +35,7 @@ MOBS = {
     type: 'The Blob',
     str: 8,
     dex: 1,
-    con: 22,
+    con: 21,
     damage_type: 'acidic ooze',
     special_text: 'attacks!'
   },
@@ -94,5 +94,5 @@ MOBS = {
     con: 5,
     damage_type: 'crushing force',
     special_text: 'executes a >>>meaningful piledriver<<<',
-  }
+  },
 }

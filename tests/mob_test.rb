@@ -15,31 +15,31 @@ class MobTest < Minitest::Test
   end
 
   def test_that_mobs_combined_stats_equal_30
-    MOBS.keys do |key|
+    MOBS.keys.each do |key|
       current_mob = MOBS[key]
-      assert_equal (current_mob[:str] + current_mob[:dex] + current_mob[:con]), 30, 'all mob configs should have combined stats of 30'
+      assert_equal (current_mob[:str] + current_mob[:dex] + current_mob[:con]), 30, "#{key} all mob configs should have combined stats of 30"
     end
   end
 
   def test_mob_type_length
-    assert @test_mob.type.length < 10, 'A Mobs type must not be longer than 10'
+    assert @test_mob.type.length < 35, 'A Mobs type must not be longer than 35'
   end
 
   def test_mobs_type_length
-    MOBS.keys do |key|
+    MOBS.keys.each do |key|
       current_mob = MOBS[key]
-      assert current_mob.type.length < 10, 'A Mobs type must not be longer than 10'
+      assert current_mob[:type].length < 35, "#{key} A Mobs type must not be longer than 35"
     end
   end
 
   def test_damage_type_length
-    assert @test_mob.damage_type.length < 10, 'A Mobs damage_type must not be longer than 10'
+    assert @test_mob.damage_type.length < 20, 'A Mobs damage_type must not be longer than 20'
   end
 
   def test_mobs_damage_type_length
-    MOBS.keys do |key|
+    MOBS.keys.each do |key|
       current_mob = MOBS[key]
-      assert current_mob .damage_type.length < 10, 'A Mobs damage_type must not be longer than 10'
+      assert current_mob[:damage_type].length < 20, "#{key} A Mobs damage_type must not be longer than 20"
     end
   end
 
@@ -48,9 +48,9 @@ class MobTest < Minitest::Test
   end
 
   def test_mobs_special_text_length
-    MOBS.keys do |key|
+    MOBS.keys.each do |key|
       current_mob = MOBS[key]
-      assert current_mob .special_text.length < 50, 'A Mobs special_text must not be longer than 50'
+      assert current_mob[:special_text].length < 50, "#{key} A Mobs special_text must not be longer than 50"
     end
   end
 
