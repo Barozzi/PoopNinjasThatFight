@@ -15,6 +15,7 @@ class Arena
 
 
   def start_battle
+    puts "#{@mob_one.type} vs. #{@mob_two.type}  FIGHT!\n\n"
     until (battle_complete?) do
       play_round
       report

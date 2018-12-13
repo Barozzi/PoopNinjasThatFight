@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../src/arena'
 require_relative '../src/mob'
+require_relative '../src/mobs/vampire'
 
 
 class ArenaTest < Minitest::Test
@@ -30,7 +31,6 @@ class ArenaTest < Minitest::Test
     assert true
   end
 
-  # Play Ninja vs Thing
   def test_ninja_vs_thing
     ninja = Mob.new(MOBS[:PoopNinja])
     thing = Mob.new(MOBS[:TheThing])
@@ -39,7 +39,6 @@ class ArenaTest < Minitest::Test
     assert true
   end
 
-  # Play Thing vs Thor
   def test_random_fight
     mob_one = Mob.new(MOBS[MOBS.keys.sample])
     mob_two = Mob.new(MOBS[MOBS.keys.sample])
@@ -48,10 +47,12 @@ class ArenaTest < Minitest::Test
     assert true
   end
 
-  def test_slime_vs_random
-    mob_two = Mob.new(MOBS[MOBS.keys.sample])
-    arena = Arena.new({mob_one: Mob.new(MOBS[:Giant]), mob_two: mob_two})
+  def test_vampire_vs_random
+    mob_one = Mob.new(MOBS[MOBS.keys.sample])
+    mob_two = Vampire.new(MOBS[MOBS.keys.sample])
+    arena = Arena.new({mob_one: mob_one, mob_two: mob_two})
     arena.start_battle
     assert true
   end
+
 end

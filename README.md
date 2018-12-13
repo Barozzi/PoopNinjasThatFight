@@ -1,5 +1,5 @@
 # Solid Steel
-A simple game that demonstrates the SOLID principals of Object Oriented Design
+A text-based game to facilitate the discussion of the SOLID principals of Object Oriented Design
 
 
 ### Single Responsibility Principal
@@ -13,9 +13,9 @@ Make Base classes
     - Attrs: battleStatus[NotStarted, InProgress, Complete]
     - manages combat:
       - determines when:
-        - a mob specials: percentile based on str
-        - a mob dodges: percentile based on dex
-        - a mob regens: percentile based on con
+        - a mob specials: die roll vs str
+        - a mob dodges: die roll vs dex
+        - a mob regens: die roll vs con
   - Gamekeeper - Why does it change? Changes to reflect User state.
 
 ### Open-Closed Principal
