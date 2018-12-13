@@ -25,34 +25,4 @@ class ArenaTest < Minitest::Test
     assert @arena.kill_mob_by_number(2).battle_complete?, 'Expect battle to be complete when mob two is dead'
   end
 
-  # Play a game and expect there not to have been any errors
-  def test_a_battle
-    @arena.start_battle
-    assert true
-  end
-
-  def test_ninja_vs_thing
-    ninja = Mob.new(MOBS[:PoopNinja])
-    thing = Mob.new(MOBS[:TheThing])
-    arena = Arena.new({mob_one: ninja, mob_two: thing})
-    arena.start_battle
-    assert true
-  end
-
-  def test_random_fight
-    mob_one = Mob.new(MOBS[MOBS.keys.sample])
-    mob_two = Mob.new(MOBS[MOBS.keys.sample])
-    arena = Arena.new({mob_one: mob_one, mob_two: mob_two})
-    arena.start_battle
-    assert true
-  end
-
-  def test_vampire_vs_random
-    mob_one = Mob.new(MOBS[MOBS.keys.sample])
-    mob_two = Vampire.new(MOBS[MOBS.keys.sample])
-    arena = Arena.new({mob_one: mob_one, mob_two: mob_two})
-    arena.start_battle
-    assert true
-  end
-
 end
